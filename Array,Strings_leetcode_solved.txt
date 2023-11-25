@@ -1,0 +1,100 @@
+// remove duplicate elements at most 2
+    int removeDuplicates(vector<int>& nums) {
+int i =0;
+        // int ele= nums[0];
+        for(auto ele : nums)
+        {
+            if(i==0 || i==1 || nums[i-2] != ele)
+            {
+                nums[i] = ele;
+                i++;
+            }
+        }
+    return i ;
+       
+        
+       
+    }
+
+
+// majority element
+
+    int majorityElement(vector<int>& nums) {
+
+        map<int,int> m;
+        //vector<int> ans;
+        if(nums.size()==1){
+            return nums[0];
+        }
+        for(int i=0;i<nums.size();i++){
+            m[nums[i]]+=1;
+            //ans.push_back(m[nums[i]]);
+
+            if(m[nums[i]]>=(nums.size()/2+1) && nums.size()%2!=0){
+                return nums[i];
+            }
+            
+            if(m[nums[i]]>=(nums.size()/2) && nums.size()%2==0){
+                return nums[i];
+            }
+
+        }
+
+// rotate the array
+
+void rotate(vector<int>& nums, int k) {
+          k=k%nums.size();
+        reverse(nums.begin(),nums.begin()+(nums.size()-k));
+
+        reverse(nums.begin()+(nums.size()-k),nums.end());
+    
+        reverse(nums.begin(),nums.end());
+
+
+
+    }
+
+return 0;
+
+3,2,1,4,5
+3,2,1,5,4
+4,5,1,2,3
+
+
+// buy and sell stock
+  int maxProfit(vector<int>& prices) {
+         int min_price = prices[0];
+        int maxprof = 0;
+
+        for(int i=1;i<prices.size();i++){
+            maxprof = max(maxprof,prices[i]-min_price);
+            min_price = min(prices[i],min_price);
+        }
+
+        return maxprof;
+
+
+    }
+
+
+        
+    }
+
+// buy and sell stock II
+ int maxProfit(vector<int>& prices) {
+
+        int total_profit=0;
+        int buy=prices[0];
+
+        for(int i=1;i<prices.size();i++){
+            if(buy>prices[i]){
+                buy=prices[i];
+            }
+
+            else{
+                total_profit+=prices[i]-buy;
+                buy=prices[i];
+            }
+        }
+        return total_profit;
+    }

@@ -98,7 +98,7 @@ return 0;
         }
         return total_profit;
     }
-// Jump Game 1 (GREEDY)
+// Jump Game 1 (GREEDY) , here we calculate the highest jump=reachable , reachable is comapred everytime with the next array element's max jump, just run the code u will get it
   int reachable=0;
         for(int i=0;i<nums.size();i++){
             if(reachable<i){
@@ -110,7 +110,8 @@ return 0;
         }
         return true;
     }
-// Jump Game 2 (GREEDY)
+// Jump Game 2 (GREEDY) // find the coverage which is window covering all the values that it can coverage
+// when this coverge crosses or when this window covers the lastindex return the jump, here everytime we update the or insert a new cover we increment the jump so basically each cover indicates a jump.
 
 int jump(vector<int>& nums) {
         int coverage=0;
@@ -135,4 +136,26 @@ int jump(vector<int>& nums) {
            
         }
         return jumps;
+    }
+// H-index
+  int hIndex(vector<int>& citations) {
+         int n = citations.size();
+        int low=0,high=n,mid;
+        int res;
+        sort(citations.begin(),citations.end());
+        
+        while(low<=high)
+        {
+            mid = low+(high-low)/2;
+            int ub = lower_bound(citations.begin(),citations.end(),mid) - citations.begin();
+            
+            if(n-ub >= mid)
+            {
+                res = mid;
+                low = mid+1;
+            }
+            else
+                high = mid-1;
+        }
+        return res;
     }

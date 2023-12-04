@@ -178,3 +178,32 @@ vector<int> productExceptSelf(vector<int>& nums) {
         }
         return ans;
     }
+// reverse a string 
+ string reverseWords(string s) {
+        string ans="";
+        int l=s.length();
+       
+        while(s[l-1]==' '){
+            l--;
+        }
+        int m=0;
+        while(s[m]==' '){
+            m++;
+        }
+        
+        for(int i=l-1;i>=m;i--){
+        
+          string a="";
+          while(s[i]!=' '){
+             a+=s[i];
+             i--;
+          }
+          reverse(a.begin(),a.end());
+          ans+=a;
+          ans+=' ';
+
+
+        }
+
+         return ans;
+    }

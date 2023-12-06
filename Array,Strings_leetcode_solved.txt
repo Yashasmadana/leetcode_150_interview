@@ -217,3 +217,53 @@ string intToRoman(int num) {
 
          return ans;
     }
+// length of the last word
+int lengthOfLastWord(string s) {
+      int n=s.length();
+      int l=0;
+      for(int i=n-1;i>=0;i--){
+        if(s[i]!=' '){
+          l++;
+        }
+        else if(l>0 && s[i]==' '){
+          break;
+        }
+         
+      }
+        return l;
+    }
+// first occurence (haystack and needle)
+ int strStr(string haystack, string needle) {
+        int l=needle.length();
+        int n=haystack.length();
+
+        for(int i=0;i<n;i++){
+            if(haystack.substr(i,l)==needle){
+                return i;
+            }
+        }
+
+        return -1;
+    }
+// longest common prefix
+ string longestCommonPrefix(vector<string>& strs) {
+         sort(strs.begin(), strs.end());
+       
+        string one=strs[0];
+        string two=strs[strs.size()-1];
+        string ans="";
+     
+        for(int i=0;i<min(one.length(),two.length());i++){
+            if(one[i]!=two[i]){
+                break;
+                //return req;
+            }
+            else {
+            ans+=one[i];
+            }
+            
+        }
+
+      return ans;
+        
+    }

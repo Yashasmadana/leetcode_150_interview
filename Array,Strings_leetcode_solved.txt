@@ -267,3 +267,36 @@ int lengthOfLastWord(string s) {
       return ans;
         
     }
+// can complete circuit
+ int canCompleteCircuit(vector<int>& gas, vector<int>& cost) {
+    
+    for(int i=0;i<gas.size();i++){
+      int l=0;
+      int rem_gas=gas[i];
+      if((rem_gas-cost[i])<=0){
+        continue;
+      }
+      int j;
+      if(i>=gas.size()-1){
+        j=0;
+      }
+else if(i<gas.size()-1){ j=i;
+j++;
+}
+
+while(rem_gas>0 && l<=gas.size()){
+  
+      rem_gas=rem_gas+gas[j]-cost[j];
+      
+      l++;
+      if(rem_gas>0 && j>=gas.size()-1){
+        j=0;
+      }
+      
+}
+if(l==gas.size()){
+  return i;
+}
+    }
+     return -1;
+    }
